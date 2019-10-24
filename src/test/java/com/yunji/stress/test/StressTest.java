@@ -35,7 +35,7 @@ public class StressTest extends BasicTest {
     @Test
     public void testFor1kHessian3() throws Exception {
         //测试次数 -> 10万次
-        int count = 10_000_000;
+        int count = 10_000;
         String requestJson = MixUtils.readResource("stress_1k_2.json");
         //反序列化的 byte 数组
         byte[] bytes = getHessian3bytes(requestJson);
@@ -77,7 +77,7 @@ public class StressTest extends BasicTest {
     public void testFor1kHessian2() throws Exception {
         String fastJson = MixUtils.readResource("stress_1k_2_fastjson.json");
         //测试次数 -> 10万次
-        int count = 10_000_000;
+        int count = 10_000;
         //测试hessian2场景
         MultiRequest request = JSON.parseObject(fastJson, MultiRequest.class);
 
