@@ -1,0 +1,24 @@
+{
+  "args0": {
+    "code": 347,
+    "orderNo": "sampleDataString",
+    "productCount": 0,
+    "totalAmount": 13.448279847721633,
+    "storeId": "12700921",
+    "flag": "true",
+    "orderDetialList": [
+      {
+        "orderNo": "1023",
+        "detailSeq": 929,
+        "Amount": 27.985657259680362,
+        "remark": "maple"
+      },
+      {
+        "detailSeq": 535,
+        "orderNo": "0317",
+        "remark": "may",
+        "Amount": 29.788535975048735
+      }
+    ]
+  }
+}

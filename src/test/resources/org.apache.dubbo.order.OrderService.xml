@@ -1,0 +1,1482 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<service namespace="org.apache.dubbo.order" name="OrderService">
+    <meta>
+        <version>1.0.0</version>
+        <timeout>30000</timeout>
+    </meta>
+    <doc>
+        OrderService
+    </doc>
+
+    <annotations>
+        <annotation key="group" value="gatewayDemo"/>
+    </annotations>
+    <methods>
+        <method name="judgeOrders">
+            <doc>
+
+            </doc>
+
+            <request name="judgeOrders_args">
+                <fields>
+                    <field tag="0" name="args0" optional="false" privacy="false">
+                        <dataType>
+                            <kind>STRUCT</kind>
+                            <ref>org.apache.dubbo.order.OrderRequest</ref>
+                        </dataType>
+                        <doc>
+
+                        </doc>
+
+                    </field>
+                    <field tag="1" name="args1" optional="false" privacy="false">
+                        <dataType>
+                            <kind>STRUCT</kind>
+                            <ref>org.apache.dubbo.order.OmsOrderRequest</ref>
+                        </dataType>
+                        <doc>
+
+                        </doc>
+
+                    </field>
+                </fields>
+            </request>
+            <response name="judgeOrders_result">
+                <fields>
+                    <field tag="0" name="success" optional="false" privacy="false">
+                        <dataType>
+                            <kind>STRUCT</kind>
+                            <ref>org.apache.dubbo.order.OrderResponse</ref>
+                        </dataType>
+                    </field>
+                </fields>
+            </response>
+        </method>
+        <method name="forSetSpec">
+            <doc>
+
+            </doc>
+
+            <request name="forSetSpec_args">
+                <fields>
+                    <field tag="0" name="args0" optional="false" privacy="false">
+                        <dataType>
+                            <kind>STRUCT</kind>
+                            <ref>org.apache.dubbo.order.test.SetSpec</ref>
+                        </dataType>
+                        <doc>
+
+                        </doc>
+
+                    </field>
+                </fields>
+            </request>
+            <response name="forSetSpec_result">
+                <fields>
+                    <field tag="0" name="success" optional="false" privacy="false">
+                        <dataType>
+                            <kind>STRUCT</kind>
+                            <ref>org.apache.dubbo.order.OrderResponse</ref>
+                        </dataType>
+                    </field>
+                </fields>
+            </response>
+        </method>
+        <method name="createOmsOrder">
+            <doc>
+
+            </doc>
+
+            <request name="createOmsOrder_args">
+                <fields>
+                    <field tag="0" name="args0" optional="false" privacy="false">
+                        <dataType>
+                            <kind>STRUCT</kind>
+                            <ref>org.apache.dubbo.order.OmsOrderRequest</ref>
+                        </dataType>
+                        <doc>
+
+                        </doc>
+
+                    </field>
+                </fields>
+            </request>
+            <response name="createOmsOrder_result">
+                <fields>
+                    <field tag="0" name="success" optional="false" privacy="false">
+                        <dataType>
+                            <kind>STRUCT</kind>
+                            <ref>org.apache.dubbo.order.OrderResponse</ref>
+                        </dataType>
+                    </field>
+                </fields>
+            </response>
+        </method>
+        <method name="judgeOrders2">
+            <doc>
+
+            </doc>
+
+            <request name="judgeOrders2_args">
+                <fields>
+                    <field tag="0" name="args0" optional="false" privacy="false">
+                        <dataType>
+                            <kind>STRUCT</kind>
+                            <ref>org.apache.dubbo.order.MultiRequest</ref>
+                        </dataType>
+                        <doc>
+
+                        </doc>
+
+                    </field>
+                </fields>
+            </request>
+            <response name="judgeOrders2_result">
+                <fields>
+                    <field tag="0" name="success" optional="false" privacy="false">
+                        <dataType>
+                            <kind>STRUCT</kind>
+                            <ref>org.apache.dubbo.order.OrderResponse</ref>
+                        </dataType>
+                    </field>
+                </fields>
+            </response>
+        </method>
+        <method name="createOrder">
+            <doc>
+
+            </doc>
+
+            <request name="createOrder_args">
+                <fields>
+                    <field tag="0" name="args0" optional="false" privacy="false">
+                        <dataType>
+                            <kind>STRUCT</kind>
+                            <ref>org.apache.dubbo.order.OrderRequest</ref>
+                        </dataType>
+                        <doc>
+
+                        </doc>
+
+                    </field>
+                </fields>
+            </request>
+            <response name="createOrder_result">
+                <fields>
+                    <field tag="0" name="success" optional="false" privacy="false">
+                        <dataType>
+                            <kind>STRUCT</kind>
+                            <ref>org.apache.dubbo.order.OrderResponse</ref>
+                        </dataType>
+                    </field>
+                </fields>
+            </response>
+        </method>
+        <method name="_getServiceMetadata">
+            <doc>
+
+            </doc>
+
+            <request name="_getServiceMetadata_args">
+                <fields>
+                </fields>
+            </request>
+            <response name="_getServiceMetadata_result">
+                <fields>
+                    <field tag="0" name="success" optional="false" privacy="false">
+                        <dataType>
+                            <kind>STRING</kind>
+                        </dataType>
+                    </field>
+                </fields>
+            </response>
+        </method>
+    </methods>
+    <structs>
+        <struct namespace="org.apache.dubbo.order.test" name="SetSpec">
+            <doc>
+
+            </doc>
+            <fields>
+                <field tag="0" name="orderDetailSet" optional="false" privacy="false">
+                    <dataType>
+                        <kind>SET</kind>
+                        <valueType>
+                            <kind>STRUCT</kind>
+                            <ref>org.apache.dubbo.order.OrderDetail</ref>
+
+                        </valueType>
+                    </dataType>
+                    <doc>
+
+                    </doc>
+
+                </field>
+                <field tag="1" name="orderDetailMap" optional="false" privacy="false">
+                    <dataType>
+                        <kind>MAP</kind>
+                        <keyType>
+                            <kind>STRING</kind>
+
+                        </keyType>
+                        <valueType>
+                            <kind>STRUCT</kind>
+                            <ref>org.apache.dubbo.order.OrderDetail</ref>
+
+                        </valueType>
+                    </dataType>
+                    <doc>
+
+                    </doc>
+
+                </field>
+                <field tag="2" name="flag" optional="false" privacy="false">
+                    <dataType>
+                        <kind>STRUCT</kind>
+                        <ref>byte</ref>
+                    </dataType>
+                    <doc>
+
+                    </doc>
+
+                </field>
+                <field tag="3" name="byteFlagA" optional="false" privacy="false">
+                    <dataType>
+                        <kind>STRUCT</kind>
+                        <ref>java.lang.Byte</ref>
+                    </dataType>
+                    <doc>
+
+                    </doc>
+
+                </field>
+                <field tag="4" name="shortFlag" optional="false" privacy="false">
+                    <dataType>
+                        <kind>STRUCT</kind>
+                        <ref>short</ref>
+                    </dataType>
+                    <doc>
+
+                    </doc>
+
+                </field>
+                <field tag="5" name="shortFlagA" optional="false" privacy="false">
+                    <dataType>
+                        <kind>STRUCT</kind>
+                        <ref>java.lang.Short</ref>
+                    </dataType>
+                    <doc>
+
+                    </doc>
+
+                </field>
+                <field tag="6" name="intFlag" optional="false" privacy="false">
+                    <dataType>
+                        <kind>INTEGER</kind>
+                    </dataType>
+                    <doc>
+
+                    </doc>
+
+                </field>
+                <field tag="7" name="integerFlag" optional="false" privacy="false">
+                    <dataType>
+                        <kind>INTEGER</kind>
+                    </dataType>
+                    <doc>
+
+                    </doc>
+
+                </field>
+                <field tag="8" name="longFlag" optional="false" privacy="false">
+                    <dataType>
+                        <kind>LONG</kind>
+                    </dataType>
+                    <doc>
+
+                    </doc>
+
+                </field>
+                <field tag="9" name="longFlagA" optional="false" privacy="false">
+                    <dataType>
+                        <kind>LONG</kind>
+                    </dataType>
+                    <doc>
+
+                    </doc>
+
+                </field>
+                <field tag="10" name="doubles" optional="false" privacy="false">
+                    <dataType>
+                        <kind>DOUBLE</kind>
+                    </dataType>
+                    <doc>
+
+                    </doc>
+
+                </field>
+                <field tag="11" name="doublesA" optional="false" privacy="false">
+                    <dataType>
+                        <kind>DOUBLE</kind>
+                    </dataType>
+                    <doc>
+
+                    </doc>
+
+                </field>
+                <field tag="12" name="floats" optional="false" privacy="false">
+                    <dataType>
+                        <kind>FLOAT</kind>
+                    </dataType>
+                    <doc>
+
+                    </doc>
+
+                </field>
+                <field tag="13" name="floatsA" optional="false" privacy="false">
+                    <dataType>
+                        <kind>FLOAT</kind>
+                    </dataType>
+                    <doc>
+
+                    </doc>
+
+                </field>
+                <field tag="14" name="chars" optional="false" privacy="false">
+                    <dataType>
+                        <kind>STRUCT</kind>
+                        <ref>char</ref>
+                    </dataType>
+                    <doc>
+
+                    </doc>
+
+                </field>
+                <field tag="15" name="charsA" optional="false" privacy="false">
+                    <dataType>
+                        <kind>STRUCT</kind>
+                        <ref>java.lang.Character</ref>
+                    </dataType>
+                    <doc>
+
+                    </doc>
+
+                </field>
+                <field tag="16" name="aBoolean" optional="false" privacy="false">
+                    <dataType>
+                        <kind>BOOLEAN</kind>
+                    </dataType>
+                    <doc>
+
+                    </doc>
+
+                </field>
+                <field tag="17" name="aBooleanA" optional="false" privacy="false">
+                    <dataType>
+                        <kind>BOOLEAN</kind>
+                    </dataType>
+                    <doc>
+
+                    </doc>
+
+                </field>
+            </fields>
+        </struct>
+        <struct namespace="org.apache.dubbo.order" name="OrderRequest">
+            <doc>
+
+            </doc>
+            <fields>
+                <field tag="0" name="code" optional="false" privacy="false">
+                    <dataType>
+                        <kind>INTEGER</kind>
+                    </dataType>
+                    <doc>
+
+                    </doc>
+
+                </field>
+                <field tag="1" name="orderNo" optional="false" privacy="false">
+                    <dataType>
+                        <kind>STRING</kind>
+                    </dataType>
+                    <doc>
+
+                    </doc>
+
+                </field>
+                <field tag="2" name="productCount" optional="false" privacy="false">
+                    <dataType>
+                        <kind>INTEGER</kind>
+                    </dataType>
+                    <doc>
+
+                    </doc>
+
+                </field>
+                <field tag="3" name="totalAmount" optional="false" privacy="false">
+                    <dataType>
+                        <kind>DOUBLE</kind>
+                    </dataType>
+                    <doc>
+
+                    </doc>
+
+                </field>
+                <field tag="4" name="storeId" optional="false" privacy="false">
+                    <dataType>
+                        <kind>STRING</kind>
+                    </dataType>
+                    <doc>
+
+                    </doc>
+
+                </field>
+                <field tag="5" name="flag" optional="false" privacy="false">
+                    <dataType>
+                        <kind>BOOLEAN</kind>
+                    </dataType>
+                    <doc>
+
+                    </doc>
+
+                </field>
+                <field tag="6" name="status" optional="false" privacy="false">
+                    <dataType>
+                        <kind>ENUM</kind>
+                        <ref>org.apache.dubbo.order.OrderStatus</ref>
+                    </dataType>
+                    <doc>
+
+                    </doc>
+
+                </field>
+                <field tag="7" name="orderDetailList" optional="false" privacy="false">
+                    <dataType>
+                        <kind>LIST</kind>
+                        <valueType>
+                            <kind>STRUCT</kind>
+                            <ref>org.apache.dubbo.order.OrderDetail</ref>
+
+                        </valueType>
+                    </dataType>
+                    <doc>
+
+                    </doc>
+
+                </field>
+            </fields>
+        </struct>
+        <struct namespace="org.apache.dubbo.order" name="OmsOrderRequest">
+            <doc>
+
+            </doc>
+            <fields>
+                <field tag="0" name="STATUS_HAD_PORTION_SEND" optional="false" privacy="false">
+                    <dataType>
+                        <kind>INTEGER</kind>
+                    </dataType>
+                    <doc>
+
+                    </doc>
+
+                </field>
+                <field tag="1" name="STATUS_HAD_SEND" optional="false" privacy="false">
+                    <dataType>
+                        <kind>INTEGER</kind>
+                    </dataType>
+                    <doc>
+
+                    </doc>
+
+                </field>
+                <field tag="2" name="orderId" optional="false" privacy="false">
+                    <dataType>
+                        <kind>STRING</kind>
+                    </dataType>
+                    <doc>
+
+                    </doc>
+
+                </field>
+                <field tag="3" name="status" optional="false" privacy="false">
+                    <dataType>
+                        <kind>INTEGER</kind>
+                    </dataType>
+                    <doc>
+
+                    </doc>
+
+                </field>
+                <field tag="4" name="logisticsList" optional="false" privacy="false">
+                    <dataType>
+                        <kind>LIST</kind>
+                        <valueType>
+                            <kind>STRUCT</kind>
+                            <ref>org.apache.dubbo.order.OmsOrderRequest$LogisticsItem</ref>
+
+                        </valueType>
+                    </dataType>
+                    <doc>
+
+                    </doc>
+
+                </field>
+            </fields>
+        </struct>
+        <struct namespace="java.lang" name="Character">
+            <doc>
+
+            </doc>
+            <fields>
+                <field tag="0" name="MIN_RADIX" optional="false" privacy="false">
+                    <dataType>
+                        <kind>INTEGER</kind>
+                    </dataType>
+                    <doc>
+
+                    </doc>
+
+                </field>
+                <field tag="1" name="MAX_RADIX" optional="false" privacy="false">
+                    <dataType>
+                        <kind>INTEGER</kind>
+                    </dataType>
+                    <doc>
+
+                    </doc>
+
+                </field>
+                <field tag="2" name="MIN_VALUE" optional="false" privacy="false">
+                    <dataType>
+                        <kind>STRUCT</kind>
+                        <ref>char</ref>
+                    </dataType>
+                    <doc>
+
+                    </doc>
+
+                </field>
+                <field tag="3" name="MAX_VALUE" optional="false" privacy="false">
+                    <dataType>
+                        <kind>STRUCT</kind>
+                        <ref>char</ref>
+                    </dataType>
+                    <doc>
+
+                    </doc>
+
+                </field>
+                <field tag="4" name="TYPE" optional="false" privacy="false">
+                    <dataType>
+                        <kind>STRUCT</kind>
+                        <ref>java.lang.Class</ref>
+                    </dataType>
+                    <doc>
+
+                    </doc>
+
+                </field>
+                <field tag="5" name="UNASSIGNED" optional="false" privacy="false">
+                    <dataType>
+                        <kind>STRUCT</kind>
+                        <ref>byte</ref>
+                    </dataType>
+                    <doc>
+
+                    </doc>
+
+                </field>
+                <field tag="6" name="UPPERCASE_LETTER" optional="false" privacy="false">
+                    <dataType>
+                        <kind>STRUCT</kind>
+                        <ref>byte</ref>
+                    </dataType>
+                    <doc>
+
+                    </doc>
+
+                </field>
+                <field tag="7" name="LOWERCASE_LETTER" optional="false" privacy="false">
+                    <dataType>
+                        <kind>STRUCT</kind>
+                        <ref>byte</ref>
+                    </dataType>
+                    <doc>
+
+                    </doc>
+
+                </field>
+                <field tag="8" name="TITLECASE_LETTER" optional="false" privacy="false">
+                    <dataType>
+                        <kind>STRUCT</kind>
+                        <ref>byte</ref>
+                    </dataType>
+                    <doc>
+
+                    </doc>
+
+                </field>
+                <field tag="9" name="MODIFIER_LETTER" optional="false" privacy="false">
+                    <dataType>
+                        <kind>STRUCT</kind>
+                        <ref>byte</ref>
+                    </dataType>
+                    <doc>
+
+                    </doc>
+
+                </field>
+                <field tag="10" name="OTHER_LETTER" optional="false" privacy="false">
+                    <dataType>
+                        <kind>STRUCT</kind>
+                        <ref>byte</ref>
+                    </dataType>
+                    <doc>
+
+                    </doc>
+
+                </field>
+                <field tag="11" name="NON_SPACING_MARK" optional="false" privacy="false">
+                    <dataType>
+                        <kind>STRUCT</kind>
+                        <ref>byte</ref>
+                    </dataType>
+                    <doc>
+
+                    </doc>
+
+                </field>
+                <field tag="12" name="ENCLOSING_MARK" optional="false" privacy="false">
+                    <dataType>
+                        <kind>STRUCT</kind>
+                        <ref>byte</ref>
+                    </dataType>
+                    <doc>
+
+                    </doc>
+
+                </field>
+                <field tag="13" name="COMBINING_SPACING_MARK" optional="false" privacy="false">
+                    <dataType>
+                        <kind>STRUCT</kind>
+                        <ref>byte</ref>
+                    </dataType>
+                    <doc>
+
+                    </doc>
+
+                </field>
+                <field tag="14" name="DECIMAL_DIGIT_NUMBER" optional="false" privacy="false">
+                    <dataType>
+                        <kind>STRUCT</kind>
+                        <ref>byte</ref>
+                    </dataType>
+                    <doc>
+
+                    </doc>
+
+                </field>
+                <field tag="15" name="LETTER_NUMBER" optional="false" privacy="false">
+                    <dataType>
+                        <kind>STRUCT</kind>
+                        <ref>byte</ref>
+                    </dataType>
+                    <doc>
+
+                    </doc>
+
+                </field>
+                <field tag="16" name="OTHER_NUMBER" optional="false" privacy="false">
+                    <dataType>
+                        <kind>STRUCT</kind>
+                        <ref>byte</ref>
+                    </dataType>
+                    <doc>
+
+                    </doc>
+
+                </field>
+                <field tag="17" name="SPACE_SEPARATOR" optional="false" privacy="false">
+                    <dataType>
+                        <kind>STRUCT</kind>
+                        <ref>byte</ref>
+                    </dataType>
+                    <doc>
+
+                    </doc>
+
+                </field>
+                <field tag="18" name="LINE_SEPARATOR" optional="false" privacy="false">
+                    <dataType>
+                        <kind>STRUCT</kind>
+                        <ref>byte</ref>
+                    </dataType>
+                    <doc>
+
+                    </doc>
+
+                </field>
+                <field tag="19" name="PARAGRAPH_SEPARATOR" optional="false" privacy="false">
+                    <dataType>
+                        <kind>STRUCT</kind>
+                        <ref>byte</ref>
+                    </dataType>
+                    <doc>
+
+                    </doc>
+
+                </field>
+                <field tag="20" name="CONTROL" optional="false" privacy="false">
+                    <dataType>
+                        <kind>STRUCT</kind>
+                        <ref>byte</ref>
+                    </dataType>
+                    <doc>
+
+                    </doc>
+
+                </field>
+                <field tag="21" name="FORMAT" optional="false" privacy="false">
+                    <dataType>
+                        <kind>STRUCT</kind>
+                        <ref>byte</ref>
+                    </dataType>
+                    <doc>
+
+                    </doc>
+
+                </field>
+                <field tag="22" name="PRIVATE_USE" optional="false" privacy="false">
+                    <dataType>
+                        <kind>STRUCT</kind>
+                        <ref>byte</ref>
+                    </dataType>
+                    <doc>
+
+                    </doc>
+
+                </field>
+                <field tag="23" name="SURROGATE" optional="false" privacy="false">
+                    <dataType>
+                        <kind>STRUCT</kind>
+                        <ref>byte</ref>
+                    </dataType>
+                    <doc>
+
+                    </doc>
+
+                </field>
+                <field tag="24" name="DASH_PUNCTUATION" optional="false" privacy="false">
+                    <dataType>
+                        <kind>STRUCT</kind>
+                        <ref>byte</ref>
+                    </dataType>
+                    <doc>
+
+                    </doc>
+
+                </field>
+                <field tag="25" name="START_PUNCTUATION" optional="false" privacy="false">
+                    <dataType>
+                        <kind>STRUCT</kind>
+                        <ref>byte</ref>
+                    </dataType>
+                    <doc>
+
+                    </doc>
+
+                </field>
+                <field tag="26" name="END_PUNCTUATION" optional="false" privacy="false">
+                    <dataType>
+                        <kind>STRUCT</kind>
+                        <ref>byte</ref>
+                    </dataType>
+                    <doc>
+
+                    </doc>
+
+                </field>
+                <field tag="27" name="CONNECTOR_PUNCTUATION" optional="false" privacy="false">
+                    <dataType>
+                        <kind>STRUCT</kind>
+                        <ref>byte</ref>
+                    </dataType>
+                    <doc>
+
+                    </doc>
+
+                </field>
+                <field tag="28" name="OTHER_PUNCTUATION" optional="false" privacy="false">
+                    <dataType>
+                        <kind>STRUCT</kind>
+                        <ref>byte</ref>
+                    </dataType>
+                    <doc>
+
+                    </doc>
+
+                </field>
+                <field tag="29" name="MATH_SYMBOL" optional="false" privacy="false">
+                    <dataType>
+                        <kind>STRUCT</kind>
+                        <ref>byte</ref>
+                    </dataType>
+                    <doc>
+
+                    </doc>
+
+                </field>
+                <field tag="30" name="CURRENCY_SYMBOL" optional="false" privacy="false">
+                    <dataType>
+                        <kind>STRUCT</kind>
+                        <ref>byte</ref>
+                    </dataType>
+                    <doc>
+
+                    </doc>
+
+                </field>
+                <field tag="31" name="MODIFIER_SYMBOL" optional="false" privacy="false">
+                    <dataType>
+                        <kind>STRUCT</kind>
+                        <ref>byte</ref>
+                    </dataType>
+                    <doc>
+
+                    </doc>
+
+                </field>
+                <field tag="32" name="OTHER_SYMBOL" optional="false" privacy="false">
+                    <dataType>
+                        <kind>STRUCT</kind>
+                        <ref>byte</ref>
+                    </dataType>
+                    <doc>
+
+                    </doc>
+
+                </field>
+                <field tag="33" name="INITIAL_QUOTE_PUNCTUATION" optional="false" privacy="false">
+                    <dataType>
+                        <kind>STRUCT</kind>
+                        <ref>byte</ref>
+                    </dataType>
+                    <doc>
+
+                    </doc>
+
+                </field>
+                <field tag="34" name="FINAL_QUOTE_PUNCTUATION" optional="false" privacy="false">
+                    <dataType>
+                        <kind>STRUCT</kind>
+                        <ref>byte</ref>
+                    </dataType>
+                    <doc>
+
+                    </doc>
+
+                </field>
+                <field tag="35" name="ERROR" optional="false" privacy="false">
+                    <dataType>
+                        <kind>INTEGER</kind>
+                    </dataType>
+                    <doc>
+
+                    </doc>
+
+                </field>
+                <field tag="36" name="DIRECTIONALITY_UNDEFINED" optional="false" privacy="false">
+                    <dataType>
+                        <kind>STRUCT</kind>
+                        <ref>byte</ref>
+                    </dataType>
+                    <doc>
+
+                    </doc>
+
+                </field>
+                <field tag="37" name="DIRECTIONALITY_LEFT_TO_RIGHT" optional="false" privacy="false">
+                    <dataType>
+                        <kind>STRUCT</kind>
+                        <ref>byte</ref>
+                    </dataType>
+                    <doc>
+
+                    </doc>
+
+                </field>
+                <field tag="38" name="DIRECTIONALITY_RIGHT_TO_LEFT" optional="false" privacy="false">
+                    <dataType>
+                        <kind>STRUCT</kind>
+                        <ref>byte</ref>
+                    </dataType>
+                    <doc>
+
+                    </doc>
+
+                </field>
+                <field tag="39" name="DIRECTIONALITY_RIGHT_TO_LEFT_ARABIC" optional="false" privacy="false">
+                    <dataType>
+                        <kind>STRUCT</kind>
+                        <ref>byte</ref>
+                    </dataType>
+                    <doc>
+
+                    </doc>
+
+                </field>
+                <field tag="40" name="DIRECTIONALITY_EUROPEAN_NUMBER" optional="false" privacy="false">
+                    <dataType>
+                        <kind>STRUCT</kind>
+                        <ref>byte</ref>
+                    </dataType>
+                    <doc>
+
+                    </doc>
+
+                </field>
+                <field tag="41" name="DIRECTIONALITY_EUROPEAN_NUMBER_SEPARATOR" optional="false" privacy="false">
+                    <dataType>
+                        <kind>STRUCT</kind>
+                        <ref>byte</ref>
+                    </dataType>
+                    <doc>
+
+                    </doc>
+
+                </field>
+                <field tag="42" name="DIRECTIONALITY_EUROPEAN_NUMBER_TERMINATOR" optional="false" privacy="false">
+                    <dataType>
+                        <kind>STRUCT</kind>
+                        <ref>byte</ref>
+                    </dataType>
+                    <doc>
+
+                    </doc>
+
+                </field>
+                <field tag="43" name="DIRECTIONALITY_ARABIC_NUMBER" optional="false" privacy="false">
+                    <dataType>
+                        <kind>STRUCT</kind>
+                        <ref>byte</ref>
+                    </dataType>
+                    <doc>
+
+                    </doc>
+
+                </field>
+                <field tag="44" name="DIRECTIONALITY_COMMON_NUMBER_SEPARATOR" optional="false" privacy="false">
+                    <dataType>
+                        <kind>STRUCT</kind>
+                        <ref>byte</ref>
+                    </dataType>
+                    <doc>
+
+                    </doc>
+
+                </field>
+                <field tag="45" name="DIRECTIONALITY_NONSPACING_MARK" optional="false" privacy="false">
+                    <dataType>
+                        <kind>STRUCT</kind>
+                        <ref>byte</ref>
+                    </dataType>
+                    <doc>
+
+                    </doc>
+
+                </field>
+                <field tag="46" name="DIRECTIONALITY_BOUNDARY_NEUTRAL" optional="false" privacy="false">
+                    <dataType>
+                        <kind>STRUCT</kind>
+                        <ref>byte</ref>
+                    </dataType>
+                    <doc>
+
+                    </doc>
+
+                </field>
+                <field tag="47" name="DIRECTIONALITY_PARAGRAPH_SEPARATOR" optional="false" privacy="false">
+                    <dataType>
+                        <kind>STRUCT</kind>
+                        <ref>byte</ref>
+                    </dataType>
+                    <doc>
+
+                    </doc>
+
+                </field>
+                <field tag="48" name="DIRECTIONALITY_SEGMENT_SEPARATOR" optional="false" privacy="false">
+                    <dataType>
+                        <kind>STRUCT</kind>
+                        <ref>byte</ref>
+                    </dataType>
+                    <doc>
+
+                    </doc>
+
+                </field>
+                <field tag="49" name="DIRECTIONALITY_WHITESPACE" optional="false" privacy="false">
+                    <dataType>
+                        <kind>STRUCT</kind>
+                        <ref>byte</ref>
+                    </dataType>
+                    <doc>
+
+                    </doc>
+
+                </field>
+                <field tag="50" name="DIRECTIONALITY_OTHER_NEUTRALS" optional="false" privacy="false">
+                    <dataType>
+                        <kind>STRUCT</kind>
+                        <ref>byte</ref>
+                    </dataType>
+                    <doc>
+
+                    </doc>
+
+                </field>
+                <field tag="51" name="DIRECTIONALITY_LEFT_TO_RIGHT_EMBEDDING" optional="false" privacy="false">
+                    <dataType>
+                        <kind>STRUCT</kind>
+                        <ref>byte</ref>
+                    </dataType>
+                    <doc>
+
+                    </doc>
+
+                </field>
+                <field tag="52" name="DIRECTIONALITY_LEFT_TO_RIGHT_OVERRIDE" optional="false" privacy="false">
+                    <dataType>
+                        <kind>STRUCT</kind>
+                        <ref>byte</ref>
+                    </dataType>
+                    <doc>
+
+                    </doc>
+
+                </field>
+                <field tag="53" name="DIRECTIONALITY_RIGHT_TO_LEFT_EMBEDDING" optional="false" privacy="false">
+                    <dataType>
+                        <kind>STRUCT</kind>
+                        <ref>byte</ref>
+                    </dataType>
+                    <doc>
+
+                    </doc>
+
+                </field>
+                <field tag="54" name="DIRECTIONALITY_RIGHT_TO_LEFT_OVERRIDE" optional="false" privacy="false">
+                    <dataType>
+                        <kind>STRUCT</kind>
+                        <ref>byte</ref>
+                    </dataType>
+                    <doc>
+
+                    </doc>
+
+                </field>
+                <field tag="55" name="DIRECTIONALITY_POP_DIRECTIONAL_FORMAT" optional="false" privacy="false">
+                    <dataType>
+                        <kind>STRUCT</kind>
+                        <ref>byte</ref>
+                    </dataType>
+                    <doc>
+
+                    </doc>
+
+                </field>
+                <field tag="56" name="MIN_HIGH_SURROGATE" optional="false" privacy="false">
+                    <dataType>
+                        <kind>STRUCT</kind>
+                        <ref>char</ref>
+                    </dataType>
+                    <doc>
+
+                    </doc>
+
+                </field>
+                <field tag="57" name="MAX_HIGH_SURROGATE" optional="false" privacy="false">
+                    <dataType>
+                        <kind>STRUCT</kind>
+                        <ref>char</ref>
+                    </dataType>
+                    <doc>
+
+                    </doc>
+
+                </field>
+                <field tag="58" name="MIN_LOW_SURROGATE" optional="false" privacy="false">
+                    <dataType>
+                        <kind>STRUCT</kind>
+                        <ref>char</ref>
+                    </dataType>
+                    <doc>
+
+                    </doc>
+
+                </field>
+                <field tag="59" name="MAX_LOW_SURROGATE" optional="false" privacy="false">
+                    <dataType>
+                        <kind>STRUCT</kind>
+                        <ref>char</ref>
+                    </dataType>
+                    <doc>
+
+                    </doc>
+
+                </field>
+                <field tag="60" name="MIN_SURROGATE" optional="false" privacy="false">
+                    <dataType>
+                        <kind>STRUCT</kind>
+                        <ref>char</ref>
+                    </dataType>
+                    <doc>
+
+                    </doc>
+
+                </field>
+                <field tag="61" name="MAX_SURROGATE" optional="false" privacy="false">
+                    <dataType>
+                        <kind>STRUCT</kind>
+                        <ref>char</ref>
+                    </dataType>
+                    <doc>
+
+                    </doc>
+
+                </field>
+                <field tag="62" name="MIN_SUPPLEMENTARY_CODE_POINT" optional="false" privacy="false">
+                    <dataType>
+                        <kind>INTEGER</kind>
+                    </dataType>
+                    <doc>
+
+                    </doc>
+
+                </field>
+                <field tag="63" name="MIN_CODE_POINT" optional="false" privacy="false">
+                    <dataType>
+                        <kind>INTEGER</kind>
+                    </dataType>
+                    <doc>
+
+                    </doc>
+
+                </field>
+                <field tag="64" name="MAX_CODE_POINT" optional="false" privacy="false">
+                    <dataType>
+                        <kind>INTEGER</kind>
+                    </dataType>
+                    <doc>
+
+                    </doc>
+
+                </field>
+                <field tag="65" name="value" optional="false" privacy="false">
+                    <dataType>
+                        <kind>STRUCT</kind>
+                        <ref>char</ref>
+                    </dataType>
+                    <doc>
+
+                    </doc>
+
+                </field>
+                <field tag="66" name="serialVersionUID" optional="false" privacy="false">
+                    <dataType>
+                        <kind>LONG</kind>
+                    </dataType>
+                    <doc>
+
+                    </doc>
+
+                </field>
+                <field tag="67" name="SIZE" optional="false" privacy="false">
+                    <dataType>
+                        <kind>INTEGER</kind>
+                    </dataType>
+                    <doc>
+
+                    </doc>
+
+                </field>
+                <field tag="68" name="BYTES" optional="false" privacy="false">
+                    <dataType>
+                        <kind>INTEGER</kind>
+                    </dataType>
+                    <doc>
+
+                    </doc>
+
+                </field>
+                <field tag="69" name="$assertionsDisabled" optional="false" privacy="false">
+                    <dataType>
+                        <kind>BOOLEAN</kind>
+                    </dataType>
+                    <doc>
+
+                    </doc>
+
+                </field>
+            </fields>
+        </struct>
+        <struct namespace="org.apache.dubbo.order" name="OrderResponse">
+            <doc>
+
+            </doc>
+            <fields>
+                <field tag="0" name="orderNo" optional="false" privacy="false">
+                    <dataType>
+                        <kind>STRING</kind>
+                    </dataType>
+                    <doc>
+
+                    </doc>
+
+                </field>
+                <field tag="1" name="totalAmount" optional="false" privacy="false">
+                    <dataType>
+                        <kind>DOUBLE</kind>
+                    </dataType>
+                    <doc>
+
+                    </doc>
+
+                </field>
+                <field tag="2" name="orderDetailResponses" optional="false" privacy="false">
+                    <dataType>
+                        <kind>LIST</kind>
+                        <valueType>
+                            <kind>STRUCT</kind>
+                            <ref>org.apache.dubbo.order.OrderDetailResponse</ref>
+
+                        </valueType>
+                    </dataType>
+                    <doc>
+
+                    </doc>
+
+                </field>
+            </fields>
+        </struct>
+        <struct namespace="org.apache.dubbo.order" name="OrderDetail">
+            <doc>
+
+            </doc>
+            <fields>
+                <field tag="0" name="orderNo" optional="false" privacy="false">
+                    <dataType>
+                        <kind>STRING</kind>
+                    </dataType>
+                    <doc>
+
+                    </doc>
+
+                </field>
+                <field tag="1" name="detailSeq" optional="false" privacy="false">
+                    <dataType>
+                        <kind>INTEGER</kind>
+                    </dataType>
+                    <doc>
+
+                    </doc>
+
+                </field>
+                <field tag="2" name="Amount" optional="false" privacy="false">
+                    <dataType>
+                        <kind>DOUBLE</kind>
+                    </dataType>
+                    <doc>
+
+                    </doc>
+
+                </field>
+                <field tag="3" name="remark" optional="false" privacy="false">
+                    <dataType>
+                        <kind>STRING</kind>
+                    </dataType>
+                    <doc>
+
+                    </doc>
+
+                </field>
+                <field tag="4" name="status" optional="false" privacy="false">
+                    <dataType>
+                        <kind>ENUM</kind>
+                        <ref>org.apache.dubbo.order.OrderStatus</ref>
+                    </dataType>
+                    <doc>
+
+                    </doc>
+
+                </field>
+            </fields>
+        </struct>
+        <struct namespace="java.lang" name="Byte">
+            <doc>
+
+            </doc>
+            <fields>
+                <field tag="0" name="MIN_VALUE" optional="false" privacy="false">
+                    <dataType>
+                        <kind>STRUCT</kind>
+                        <ref>byte</ref>
+                    </dataType>
+                    <doc>
+
+                    </doc>
+
+                </field>
+                <field tag="1" name="MAX_VALUE" optional="false" privacy="false">
+                    <dataType>
+                        <kind>STRUCT</kind>
+                        <ref>byte</ref>
+                    </dataType>
+                    <doc>
+
+                    </doc>
+
+                </field>
+                <field tag="2" name="TYPE" optional="false" privacy="false">
+                    <dataType>
+                        <kind>STRUCT</kind>
+                        <ref>java.lang.Class</ref>
+                    </dataType>
+                    <doc>
+
+                    </doc>
+
+                </field>
+                <field tag="3" name="value" optional="false" privacy="false">
+                    <dataType>
+                        <kind>STRUCT</kind>
+                        <ref>byte</ref>
+                    </dataType>
+                    <doc>
+
+                    </doc>
+
+                </field>
+                <field tag="4" name="SIZE" optional="false" privacy="false">
+                    <dataType>
+                        <kind>INTEGER</kind>
+                    </dataType>
+                    <doc>
+
+                    </doc>
+
+                </field>
+                <field tag="5" name="BYTES" optional="false" privacy="false">
+                    <dataType>
+                        <kind>INTEGER</kind>
+                    </dataType>
+                    <doc>
+
+                    </doc>
+
+                </field>
+                <field tag="6" name="serialVersionUID" optional="false" privacy="false">
+                    <dataType>
+                        <kind>LONG</kind>
+                    </dataType>
+                    <doc>
+
+                    </doc>
+
+                </field>
+                <field tag="7" name="serialVersionUID" optional="false" privacy="false">
+                    <dataType>
+                        <kind>LONG</kind>
+                    </dataType>
+                    <doc>
+
+                    </doc>
+
+                </field>
+            </fields>
+        </struct>
+        <struct namespace="org.apache.dubbo.order" name="OmsOrderRequest$LogisticsItem">
+            <doc>
+
+            </doc>
+            <fields>
+                <field tag="0" name="skuNo" optional="false" privacy="false">
+                    <dataType>
+                        <kind>STRING</kind>
+                    </dataType>
+                    <doc>
+
+                    </doc>
+
+                </field>
+                <field tag="1" name="logisticsCompanyNo" optional="false" privacy="false">
+                    <dataType>
+                        <kind>STRING</kind>
+                    </dataType>
+                    <doc>
+
+                    </doc>
+
+                </field>
+            </fields>
+        </struct>
+        <struct namespace="org.apache.dubbo.order" name="OrderDetailResponse">
+            <doc>
+
+            </doc>
+            <fields>
+                <field tag="0" name="orderNo" optional="false" privacy="false">
+                    <dataType>
+                        <kind>STRING</kind>
+                    </dataType>
+                    <doc>
+
+                    </doc>
+
+                </field>
+            </fields>
+        </struct>
+        <struct namespace="org.apache.dubbo.order" name="MultiRequest">
+            <doc>
+
+            </doc>
+            <fields>
+                <field tag="0" name="orderRequest" optional="false" privacy="false">
+                    <dataType>
+                        <kind>STRUCT</kind>
+                        <ref>org.apache.dubbo.order.OrderRequest</ref>
+                    </dataType>
+                    <doc>
+
+                    </doc>
+
+                </field>
+                <field tag="1" name="omsOrderRequest" optional="false" privacy="false">
+                    <dataType>
+                        <kind>STRUCT</kind>
+                        <ref>org.apache.dubbo.order.OmsOrderRequest</ref>
+                    </dataType>
+                    <doc>
+
+                    </doc>
+
+                </field>
+            </fields>
+        </struct>
+    </structs>
+    <enums>
+        <tenum namespace="org.apache.dubbo.order" name="OrderStatus">
+            <items>
+                <item>
+                    <label>DOING</label>
+                    <value>1</value>
+                </item>
+                <item>
+                    <label>FINISHED</label>
+                    <value>2</value>
+                </item>
+            </items>
+        </tenum>
+    </enums>
+</service>
