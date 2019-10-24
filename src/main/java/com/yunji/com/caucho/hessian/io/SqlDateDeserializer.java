@@ -117,7 +117,7 @@ public class SqlDateDeserializer extends AbstractDeserializer {
         return value;
     }
 
-    private Object create(long initValue)
+    protected Object create(long initValue)
             throws IOException {
         if (initValue == Long.MIN_VALUE)
             throw new IOException(_cl.getName() + " expects name.");

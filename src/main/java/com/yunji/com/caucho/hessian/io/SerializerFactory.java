@@ -48,7 +48,6 @@
 
 package com.yunji.com.caucho.hessian.io;
 
-import com.yunji.com.caucho.hessian.io.hessian3.Hessian3MapSerializer;
 import com.yunji.com.caucho.hessian.io.java8.DurationHandle;
 import com.yunji.com.caucho.hessian.io.java8.InstantHandle;
 import com.yunji.com.caucho.hessian.io.java8.LocalDateHandle;
@@ -97,8 +96,8 @@ public class SerializerFactory extends AbstractSerializerFactory {
             = new BasicDeserializer(BasicDeserializer.OBJECT);
 
     protected static HashMap _staticSerializerMap;
-    private static HashMap _staticDeserializerMap;
-    private static HashMap _staticTypeMap;
+    protected static HashMap _staticDeserializerMap;
+    protected static HashMap _staticTypeMap;
 
     static {
         _staticSerializerMap = new HashMap();
@@ -687,7 +686,7 @@ public class SerializerFactory extends AbstractSerializerFactory {
      *
      * @return if on java 8
      */
-    private static boolean isJava8() {
+    public static boolean isJava8() {
         String javaVersion = System.getProperty("java.specification.version");
         return Double.valueOf(javaVersion) >= 1.8;
     }

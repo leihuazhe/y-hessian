@@ -46,20 +46,25 @@
  * @author Scott Ferguson
  */
 
-package com.yunji.com.caucho.hessian.io;
+package com.yunji.com.caucho.hessian.io.hessian3;
+
+import com.yunji.com.caucho.hessian.io.AbstractHessianOutput;
+import com.yunji.com.caucho.hessian.io.AbstractSerializer;
+import com.yunji.com.caucho.hessian.io.ArraySerializer;
 
 import java.io.IOException;
 
 /**
  * Serializing a Java array.
  */
-public class ArraySerializer extends AbstractSerializer {
+public class Hessian3ArraySerializer extends ArraySerializer {
+
     @Override
     public void writeObject(Object obj, AbstractHessianOutput out)
             throws IOException {
-        if (out.addRef(obj))
+        /*if (out.addRef(obj))
             return;
-
+        */
         Object[] array = (Object[]) obj;
 
         boolean hasEnd = out.writeListBegin(array.length,
@@ -72,22 +77,5 @@ public class ArraySerializer extends AbstractSerializer {
             out.writeListEnd();
     }
 
-    /**
-     * Returns the &lt;type> name for a &lt;list>.
-     */
-    protected String getArrayType(Class cl) {
-        if (cl.isArray())
-            return '[' + getArrayType(cl.getComponentType());
 
-        String name = cl.getName();
-
-        if (name.equals("java.lang.String"))
-            return "string";
-        else if (name.equals("java.lang.Object"))
-            return "object";
-        else if (name.equals("java.util.Date"))
-            return "date";
-        else
-            return name;
-    }
 }

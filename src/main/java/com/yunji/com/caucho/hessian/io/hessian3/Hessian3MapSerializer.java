@@ -1,7 +1,7 @@
 package com.yunji.com.caucho.hessian.io.hessian3;
 
 import com.yunji.com.caucho.hessian.io.AbstractHessianOutput;
-import com.yunji.com.caucho.hessian.io.AbstractSerializer;
+import com.yunji.com.caucho.hessian.io.MapSerializer;
 
 import java.io.IOException;
 import java.util.HashMap;
@@ -11,28 +11,14 @@ import java.util.Map;
 /**
  * @author Denim.leihz 2019-10-24 2:58 PM
  */
-public class Hessian3MapSerializer extends AbstractSerializer {
-    private boolean _isSendJavaType = true;
-
-    /**
-     * Return true if the java type of the collection should be sent.
-     */
-    public boolean getSendJavaType() {
-        return _isSendJavaType;
-    }
-
-    /**
-     * Set true if the java type of the collection should be sent.
-     */
-    public void setSendJavaType(boolean sendJavaType) {
-        _isSendJavaType = sendJavaType;
-    }
+public class Hessian3MapSerializer extends MapSerializer {
 
     @Override
     public void writeObject(Object obj, AbstractHessianOutput out)
             throws IOException {
-        if (out.addRef(obj))
+        /*if (out.addRef(obj))
             return;
+         */
 
         Map map = (Map) obj;
 

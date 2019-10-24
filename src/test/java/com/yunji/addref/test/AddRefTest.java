@@ -6,6 +6,7 @@ import org.apache.dubbo.order.OrderDetail;
 import org.apache.dubbo.order.OrderRequest;
 import org.junit.Test;
 
+import java.math.BigDecimal;
 import java.util.ArrayList;
 
 /**
@@ -18,6 +19,8 @@ public class AddRefTest extends BasicTest {
         MultiRequest request = new MultiRequest();
         OrderRequest orderRequest = new OrderRequest();
         OrderDetail orderDetail = new OrderDetail();
+        orderDetail.setOrderNo("Maple_1023_0317_May");
+        orderDetail.setBigDecimal(new BigDecimal(21));
 
         orderRequest.setOrderDetailList(new ArrayList<OrderDetail>() {{
             add(orderDetail);

@@ -22,7 +22,7 @@
  *    Alternately, this acknowlegement may appear in the software itself,
  *    if and wherever such third-party acknowlegements normally appear.
  *
- * 4. The names "Hessian", "Resin", and "Caucho" must not be used to
+ * 4. The names "Burlap", "Resin", and "Caucho" must not be used to
  *    endorse or promote products derived from this software without prior
  *    written permission. For written permission, please contact
  *    info@caucho.com.
@@ -46,48 +46,57 @@
  * @author Scott Ferguson
  */
 
-package com.yunji.com.caucho.hessian.io;
+package com.yunji.com.caucho.hessian.io.hessian3;
+
+import com.yunji.com.caucho.hessian.io.AbstractHessianOutput;
+import com.yunji.com.caucho.hessian.io.AbstractSerializer;
+import com.yunji.com.caucho.hessian.io.EnumSerializer;
 
 import java.io.IOException;
+import java.lang.reflect.Method;
 
 /**
- * Serializing a Java array.
+ * Serializing an object for known object types.
  */
-public class ArraySerializer extends AbstractSerializer {
+public class Hessian3EnumSerializer extends EnumSerializer {
+
+    public Hessian3EnumSerializer(Class cl) {
+        super(cl);
+    }
+
     @Override
     public void writeObject(Object obj, AbstractHessianOutput out)
             throws IOException {
-        if (out.addRef(obj))
+        /*if (out.addRef(obj))
             return;
+         */
 
-        Object[] array = (Object[]) obj;
+        Class cl = obj.getClass();
 
-        boolean hasEnd = out.writeListBegin(array.length,
-                getArrayType(obj.getClass()));
+        if (!cl.isEnum() && cl.getSuperclass().isEnum())
+            cl = cl.getSuperclass();
 
-        for (int i = 0; i < array.length; i++)
-            out.writeObject(array[i]);
+        String name = null;
+        try {
+            name = (String) _name.invoke(obj, (Object[]) null);
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
 
-        if (hasEnd)
-            out.writeListEnd();
-    }
+        int ref = out.writeObjectBegin(cl.getName());
 
-    /**
-     * Returns the &lt;type> name for a &lt;list>.
-     */
-    protected String getArrayType(Class cl) {
-        if (cl.isArray())
-            return '[' + getArrayType(cl.getComponentType());
+        if (ref < -1) {
+            out.writeString("name");
+            out.writeString(name);
+            out.writeMapEnd();
+        } else {
+            if (ref == -1) {
+                out.writeClassFieldLength(1);
+                out.writeString("name");
+                out.writeObjectBegin(cl.getName());
+            }
 
-        String name = cl.getName();
-
-        if (name.equals("java.lang.String"))
-            return "string";
-        else if (name.equals("java.lang.Object"))
-            return "object";
-        else if (name.equals("java.util.Date"))
-            return "date";
-        else
-            return name;
+            out.writeString(name);
+        }
     }
 }

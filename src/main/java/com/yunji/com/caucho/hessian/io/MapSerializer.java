@@ -57,7 +57,7 @@ import java.util.Map;
  * Serializing a JDK 1.2 java.util.Map.
  */
 public class MapSerializer extends AbstractSerializer {
-    private boolean _isSendJavaType = true;
+    protected boolean _isSendJavaType = true;
 
     /**
      * Return true if the java type of the collection should be sent.

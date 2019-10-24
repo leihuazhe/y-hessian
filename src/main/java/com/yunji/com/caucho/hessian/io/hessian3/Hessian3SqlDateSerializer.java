@@ -46,48 +46,46 @@
  * @author Scott Ferguson
  */
 
-package com.yunji.com.caucho.hessian.io;
+package com.yunji.com.caucho.hessian.io.hessian3;
+
+import com.yunji.com.caucho.hessian.io.AbstractHessianOutput;
+import com.yunji.com.caucho.hessian.io.SqlDateSerializer;
 
 import java.io.IOException;
+import java.util.Date;
 
 /**
- * Serializing a Java array.
+ * Serializing a sql date object.
  */
-public class ArraySerializer extends AbstractSerializer {
+public class Hessian3SqlDateSerializer extends SqlDateSerializer {
+
     @Override
     public void writeObject(Object obj, AbstractHessianOutput out)
             throws IOException {
-        if (out.addRef(obj))
-            return;
+        if (obj == null)
+            out.writeNull();
+        else {
+            Class cl = obj.getClass();
 
-        Object[] array = (Object[]) obj;
+            /*if (out.addRef(obj))
+                return;
+            */
 
-        boolean hasEnd = out.writeListBegin(array.length,
-                getArrayType(obj.getClass()));
+            int ref = out.writeObjectBegin(cl.getName());
 
-        for (int i = 0; i < array.length; i++)
-            out.writeObject(array[i]);
+            if (ref < -1) {
+                out.writeString("value");
+                out.writeUTCDate(((Date) obj).getTime());
+                out.writeMapEnd();
+            } else {
+                if (ref == -1) {
+                    out.writeInt(1);
+                    out.writeString("value");
+                    out.writeObjectBegin(cl.getName());
+                }
 
-        if (hasEnd)
-            out.writeListEnd();
-    }
-
-    /**
-     * Returns the &lt;type> name for a &lt;list>.
-     */
-    protected String getArrayType(Class cl) {
-        if (cl.isArray())
-            return '[' + getArrayType(cl.getComponentType());
-
-        String name = cl.getName();
-
-        if (name.equals("java.lang.String"))
-            return "string";
-        else if (name.equals("java.lang.Object"))
-            return "object";
-        else if (name.equals("java.util.Date"))
-            return "date";
-        else
-            return name;
+                out.writeUTCDate(((Date) obj).getTime());
+            }
+        }
     }
 }

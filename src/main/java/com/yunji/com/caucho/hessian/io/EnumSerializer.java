@@ -55,7 +55,7 @@ import java.lang.reflect.Method;
  * Serializing an object for known object types.
  */
 public class EnumSerializer extends AbstractSerializer {
-    private Method _name;
+    protected Method _name;
 
     public EnumSerializer(Class cl) {
         // hessian/32b[12], hessian/3ab[23]
