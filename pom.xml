@@ -134,6 +134,21 @@
         </dependency>
 
         <dependency>
+            <groupId>com.yunji.frameworks</groupId>
+            <artifactId>compiling-bytecode-enhance</artifactId>
+            <!--<version>1.8</version>-->
+            <version>1.7-SNAPSHOT</version>
+            <exclusions>
+                <exclusion>
+                    <groupId>ch.qos.logback</groupId>
+                    <artifactId>logback-classic</artifactId>
+                </exclusion>
+
+            </exclusions>
+        </dependency>
+
+
+        <dependency>
             <groupId>io.netty</groupId>
             <artifactId>netty-all</artifactId>
             <version>4.1.29.Final</version>
