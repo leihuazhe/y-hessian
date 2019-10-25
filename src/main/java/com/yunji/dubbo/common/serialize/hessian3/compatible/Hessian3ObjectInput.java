@@ -16,7 +16,7 @@
  */
 package com.yunji.dubbo.common.serialize.hessian3.compatible;
 
-import com.yunji.com.caucho.hessian.io.Hessian2Input;
+import com.yunji.dubbo.common.serialize.hessian3.Hessian3Input;
 import com.yunji.dubbo.common.serialize.hessian3.Hessian3SerializerFactory;
 import org.apache.dubbo.common.serialize.ObjectInput;
 
@@ -28,10 +28,10 @@ import java.lang.reflect.Type;
  * Hessian2 Object input.
  */
 public class Hessian3ObjectInput implements ObjectInput {
-    private final Hessian2Input mH2i;
+    private final Hessian3Input mH2i;
 
     public Hessian3ObjectInput(InputStream is) {
-        mH2i = new Hessian2Input(is);
+        mH2i = new Hessian3Input(is);
         mH2i.setSerializerFactory(Hessian3SerializerFactory.SERIALIZER_FACTORY);
     }
 
@@ -95,6 +95,10 @@ public class Hessian3ObjectInput implements ObjectInput {
     @Override
     public <T> T readObject(Class<T> cls, Type type) throws IOException, ClassNotFoundException {
         return readObject(cls);
+    }
+
+    public Hessian3Input getCmH2i() {
+        return mH2i;
     }
 
 }

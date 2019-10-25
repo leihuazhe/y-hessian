@@ -1,7 +1,7 @@
 package com.yunji.gateway.jsonserializer;
 
 import com.yunji.dubbo.common.serialize.hessian3.Hessian3Input;
-import com.yunji.dubbo.common.serialize.hessian3.Hessian3ObjectInput;
+import com.yunji.dubbo.common.serialize.hessian3.compatible.Hessian3ObjectInput;
 import com.yunji.dubbo.common.serialize.hessian3.Hessian3ObjectOutput;
 import com.yunji.gateway.metadata.OptimizedService;
 import com.yunji.gateway.metadata.OptimizedStruct;

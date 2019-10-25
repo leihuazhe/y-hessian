@@ -27,10 +27,10 @@ import java.lang.reflect.Type;
  * Hessian2 Object input.
  */
 public class Hessian3ObjectInput implements ObjectInput {
-    private final Hessian3Input mH3i;
+    private final Hessian2Input mH3i;
 
     public Hessian3ObjectInput(InputStream is) {
-        mH3i = new Hessian3Input(is);
+        mH3i = new Hessian2Input(is);
         mH3i.setSerializerFactory(Hessian3SerializerFactory.SERIALIZER_FACTORY);
     }
 
@@ -96,7 +96,7 @@ public class Hessian3ObjectInput implements ObjectInput {
         return readObject(cls);
     }
 
-    public Hessian3Input getCmH2i() {
+    public Hessian2Input getCmH2i() {
         return mH3i;
     }
 
