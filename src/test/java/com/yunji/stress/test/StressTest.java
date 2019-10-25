@@ -1,8 +1,8 @@
 package com.yunji.stress.test;
 
 import com.alibaba.fastjson.JSON;
-import com.yunji.dubbo.common.serialize.hessian3.Hessian3ObjectInput;
-import com.yunji.dubbo.common.serialize.hessian3.compatible.CodecContext;
+import com.yunji.dubbo.common.serialize.streaming.alibaba.Hessian2StreamingObjectInput;
+import com.yunji.dubbo.common.serialize.util.CodecContext;
 import com.yunji.gateway.jsonserializer.JsonSerializer;
 import com.yunji.gateway.metadata.OptimizedService;
 import com.yunji.gateway.metadata.OptimizedStruct;
@@ -124,14 +124,14 @@ public class StressTest extends BasicTest {
         CodecContext.getContext().setUseJsonDecoder(true);
         //预热
         for (int i = 0; i < 100; i++) {
-            Hessian3ObjectInput hessian3ObjectInput = new Hessian3ObjectInput(new ByteArrayInputStream(bytes));
+            Hessian2StreamingObjectInput hessian3ObjectInput = new Hessian2StreamingObjectInput(new ByteArrayInputStream(bytes));
             String json = jsonSerializer.read(hessian3ObjectInput);
             System.out.println(json);
         }
 
         long st = System.nanoTime();
         for (int i = 0; i < count; i++) {
-            Hessian3ObjectInput hessian3ObjectInput = new Hessian3ObjectInput(new ByteArrayInputStream(bytes));
+            Hessian2StreamingObjectInput hessian3ObjectInput = new Hessian2StreamingObjectInput(new ByteArrayInputStream(bytes));
             jsonSerializer.read(hessian3ObjectInput);
         }
         long et = System.nanoTime();
@@ -193,7 +193,7 @@ public class StressTest extends BasicTest {
     }
 
     private String hessian3DeSerializer(byte[] bytes, JsonSerializer jsonSerializer) throws Exception {
-        Hessian3ObjectInput hessian3ObjectInput = new Hessian3ObjectInput(new ByteArrayInputStream(bytes));
+        Hessian2StreamingObjectInput hessian3ObjectInput = new Hessian2StreamingObjectInput(new ByteArrayInputStream(bytes));
         return jsonSerializer.read(hessian3ObjectInput);
     }
 }

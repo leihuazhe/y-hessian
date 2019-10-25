@@ -45,7 +45,7 @@
  *
  * @author Scott Ferguson
  */
-package com.yunji.dubbo.common.serialize.hessian3.compatible;
+package com.yunji.dubbo.common.serialize.compatible;
 
 import com.yunji.com.caucho.hessian.io.*;
 

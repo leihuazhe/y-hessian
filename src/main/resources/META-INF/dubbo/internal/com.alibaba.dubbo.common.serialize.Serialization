@@ -1,1 +1,1 @@
-hessian3=com.yunji.dubbo.common.serialize.hessian3.Hessian3Serialization
+hessian2_streaming=com.yunji.dubbo.common.serialize.streaming.alibaba.Hessian2StreamingSerialization

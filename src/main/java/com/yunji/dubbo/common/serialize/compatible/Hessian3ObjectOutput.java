@@ -14,10 +14,11 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.yunji.dubbo.common.serialize.hessian3;
+package com.yunji.dubbo.common.serialize.compatible;
 
-import com.alibaba.dubbo.common.serialize.ObjectOutput;
 import com.yunji.com.caucho.hessian.io.Hessian2Output;
+import com.yunji.dubbo.common.serialize.util.Hessian3SerializerFactory;
+import org.apache.dubbo.common.serialize.ObjectOutput;
 
 import java.io.IOException;
 import java.io.OutputStream;
@@ -26,74 +27,74 @@ import java.io.OutputStream;
  * Hessian2 Object output.
  */
 public class Hessian3ObjectOutput implements ObjectOutput {
-    private final Hessian2Output mH2o;
+    private final Hessian2Output mH3o;
 
-    public Hessian2Output getmH2o() {
-        return mH2o;
+    public Hessian2Output getmH3o() {
+        return mH3o;
     }
 
     public Hessian3ObjectOutput(OutputStream os) {
-        mH2o = new Hessian2Output(os);
-        mH2o.setSerializerFactory(Hessian3SerializerFactory.SERIALIZER_FACTORY);
+        mH3o = new Hessian2Output(os);
+        mH3o.setSerializerFactory(Hessian3SerializerFactory.SERIALIZER_FACTORY);
     }
 
     @Override
     public void writeBool(boolean v) throws IOException {
-        mH2o.writeBoolean(v);
+        mH3o.writeBoolean(v);
     }
 
     @Override
     public void writeByte(byte v) throws IOException {
-        mH2o.writeInt(v);
+        mH3o.writeInt(v);
     }
 
     @Override
     public void writeShort(short v) throws IOException {
-        mH2o.writeInt(v);
+        mH3o.writeInt(v);
     }
 
     @Override
     public void writeInt(int v) throws IOException {
-        mH2o.writeInt(v);
+        mH3o.writeInt(v);
     }
 
     @Override
     public void writeLong(long v) throws IOException {
-        mH2o.writeLong(v);
+        mH3o.writeLong(v);
     }
 
     @Override
     public void writeFloat(float v) throws IOException {
-        mH2o.writeDouble(v);
+        mH3o.writeDouble(v);
     }
 
     @Override
     public void writeDouble(double v) throws IOException {
-        mH2o.writeDouble(v);
+        mH3o.writeDouble(v);
     }
 
     @Override
     public void writeBytes(byte[] b) throws IOException {
-        mH2o.writeBytes(b);
+        mH3o.writeBytes(b);
     }
 
     @Override
     public void writeBytes(byte[] b, int off, int len) throws IOException {
-        mH2o.writeBytes(b, off, len);
+        mH3o.writeBytes(b, off, len);
     }
 
     @Override
     public void writeUTF(String v) throws IOException {
-        mH2o.writeString(v);
+        mH3o.writeString(v);
     }
 
     @Override
     public void writeObject(Object obj) throws IOException {
-        mH2o.writeObject(obj);
+        mH3o.writeObject(obj);
     }
 
     @Override
     public void flushBuffer() throws IOException {
-        mH2o.flushBuffer();
+        mH3o.flushBuffer();
     }
 }

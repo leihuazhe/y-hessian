@@ -8,6 +8,7 @@ import com.alibaba.dubbo.common.logger.Logger;
 import com.alibaba.dubbo.common.logger.LoggerFactory;
 import com.alibaba.dubbo.common.serialize.ObjectInput;
 import com.alibaba.dubbo.common.serialize.Serialization;
+import com.alibaba.dubbo.common.serialize.support.hessian.Hessian2Serialization;
 import com.alibaba.dubbo.common.utils.StringUtils;
 import com.alibaba.dubbo.remoting.Channel;
 import com.alibaba.dubbo.remoting.exchange.Request;
@@ -17,6 +18,7 @@ import com.alibaba.dubbo.rpc.Invocation;
 import com.alibaba.dubbo.rpc.protocol.dubbo.DecodeableRpcResult;
 import com.alibaba.dubbo.rpc.protocol.dubbo.DubboCodec;
 import com.alibaba.dubbo.rpc.protocol.dubbo.YunjiDecodeableRpcInvocation;
+import com.yunji.dubbo.common.serialize.compatible.alibaba.Hessian2CompatibleSerialization;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -26,6 +28,8 @@ import java.io.InputStream;
  */
 public class YunjiDubboCodec extends DubboCodec {
     private static final Logger log = LoggerFactory.getLogger(YunjiDubboCodec.class);
+
+    private Serialization hessian2CompatibleSerialization = new Hessian2CompatibleSerialization();
 
     @Override
     protected Object decodeBody(Channel channel, InputStream is, byte[] header) throws IOException {
@@ -114,6 +118,18 @@ public class YunjiDubboCodec extends DubboCodec {
             }
             return req;
         }
+    }
+
+    /**
+     * encode 的时候使用
+     */
+    @Override
+    protected Serialization getSerialization(Channel channel) {
+        Serialization serialization = CodecSupport.getSerialization(channel.getUrl());
+        if (serialization instanceof Hessian2Serialization) {
+            return hessian2CompatibleSerialization;
+        }
+        return serialization;
     }
 
     private ObjectInput deserialize(Serialization serialization, URL url, InputStream is)

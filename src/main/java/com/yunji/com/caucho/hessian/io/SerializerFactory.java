@@ -230,7 +230,7 @@ public class SerializerFactory extends AbstractSerializerFactory {
     protected ConcurrentHashMap _cachedSerializerMap;
     private ConcurrentHashMap _cachedDeserializerMap;
     private ConcurrentHashMap _cachedTypeDeserializerMap;
-    private boolean _isAllowNonSerializable;
+    protected boolean _isAllowNonSerializable;
     /**
      * For those classes are unknown in current classloader, record them in this set to avoid
      * frequently class loading and to reduce performance overhead.

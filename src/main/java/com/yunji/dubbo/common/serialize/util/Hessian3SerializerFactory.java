@@ -14,7 +14,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.yunji.dubbo.common.serialize.hessian3;
+package com.yunji.dubbo.common.serialize.util;
 
 import com.yunji.com.caucho.hessian.io.*;
 import com.yunji.com.caucho.hessian.io.hessian3.*;
@@ -23,6 +23,7 @@ import com.yunji.com.caucho.hessian.io.java8.*;
 import javax.management.ObjectName;
 import java.io.File;
 import java.io.InputStream;
+import java.io.Serializable;
 import java.math.BigDecimal;
 import java.math.BigInteger;
 import java.util.*;
@@ -162,6 +163,19 @@ public class Hessian3SerializerFactory extends SerializerFactory {
     @Override
     public ClassLoader getClassLoader() {
         return Thread.currentThread().getContextClassLoader();
+    }
+
+    @Override
+    protected Serializer getDefaultSerializer(Class cl) {
+        if (_defaultSerializer != null)
+            return _defaultSerializer;
+
+        if (!Serializable.class.isAssignableFrom(cl)
+                && !_isAllowNonSerializable) {
+            throw new IllegalStateException("Serialized class " + cl.getName() + " must implement java.io.Serializable");
+        }
+
+        return new Hessian3JavaSerializer(cl, _loader);
     }
 
     @Override

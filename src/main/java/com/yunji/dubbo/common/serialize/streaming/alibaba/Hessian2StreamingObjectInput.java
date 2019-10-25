@@ -14,24 +14,24 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.yunji.dubbo.common.serialize.hessian3.compatible;
+package com.yunji.dubbo.common.serialize.streaming.alibaba;
 
-import com.yunji.dubbo.common.serialize.hessian3.Hessian3Input;
-import com.yunji.dubbo.common.serialize.hessian3.Hessian3SerializerFactory;
-import org.apache.dubbo.common.serialize.ObjectInput;
+import com.alibaba.dubbo.common.serialize.ObjectInput;
+import com.yunji.com.caucho.hessian.io.Hessian2Input;
+import com.yunji.dubbo.common.serialize.util.Hessian3SerializerFactory;
 
 import java.io.IOException;
 import java.io.InputStream;
 import java.lang.reflect.Type;
 
 /**
- * Hessian2 Object input.
+ * Hessian2 Object input. 给 provider 进行解码时用到,按照 read field,read value 的模式。
  */
-public class Hessian3ObjectInput implements ObjectInput {
-    private final Hessian3Input mH2i;
+public class Hessian2StreamingObjectInput implements ObjectInput {
+    private final Hessian2Input mH2i;
 
-    public Hessian3ObjectInput(InputStream is) {
-        mH2i = new Hessian3Input(is);
+    public Hessian2StreamingObjectInput(InputStream is) {
+        mH2i = new Hessian2Input(is);
         mH2i.setSerializerFactory(Hessian3SerializerFactory.SERIALIZER_FACTORY);
     }
 
@@ -97,7 +97,7 @@ public class Hessian3ObjectInput implements ObjectInput {
         return readObject(cls);
     }
 
-    public Hessian3Input getCmH2i() {
+    public Hessian2Input getCmH2i() {
         return mH2i;
     }
 

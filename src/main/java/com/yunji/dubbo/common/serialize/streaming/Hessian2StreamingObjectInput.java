@@ -14,81 +14,82 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.yunji.dubbo.common.serialize.hessian3;
+package com.yunji.dubbo.common.serialize.streaming;
 
-import com.alibaba.dubbo.common.serialize.ObjectInput;
 import com.yunji.com.caucho.hessian.io.Hessian2Input;
+import com.yunji.dubbo.common.serialize.util.Hessian3SerializerFactory;
+import org.apache.dubbo.common.serialize.ObjectInput;
 
 import java.io.IOException;
 import java.io.InputStream;
 import java.lang.reflect.Type;
 
 /**
- * Hessian2 Object input.
+ * Hessian2 Object input. 给 provider 进行解码时用到,按照 read field,read value 的模式。
  */
-public class Hessian3ObjectInput implements ObjectInput {
-    private final Hessian2Input mH3i;
+public class Hessian2StreamingObjectInput implements ObjectInput {
+    private final Hessian2Input mH2i;
 
-    public Hessian3ObjectInput(InputStream is) {
-        mH3i = new Hessian2Input(is);
-        mH3i.setSerializerFactory(Hessian3SerializerFactory.SERIALIZER_FACTORY);
+    public Hessian2StreamingObjectInput(InputStream is) {
+        mH2i = new Hessian2Input(is);
+        mH2i.setSerializerFactory(Hessian3SerializerFactory.SERIALIZER_FACTORY);
     }
 
     @Override
     public boolean readBool() throws IOException {
-        return mH3i.readBoolean();
+        return mH2i.readBoolean();
     }
 
     @Override
     public byte readByte() throws IOException {
-        return (byte) mH3i.readInt();
+        return (byte) mH2i.readInt();
     }
 
     @Override
     public short readShort() throws IOException {
-        return (short) mH3i.readInt();
+        return (short) mH2i.readInt();
     }
 
     @Override
     public int readInt() throws IOException {
-        return mH3i.readInt();
+        return mH2i.readInt();
     }
 
     @Override
     public long readLong() throws IOException {
-        return mH3i.readLong();
+        return mH2i.readLong();
     }
 
     @Override
     public float readFloat() throws IOException {
-        return (float) mH3i.readDouble();
+        return (float) mH2i.readDouble();
     }
 
     @Override
     public double readDouble() throws IOException {
-        return mH3i.readDouble();
+        return mH2i.readDouble();
     }
 
     @Override
     public byte[] readBytes() throws IOException {
-        return mH3i.readBytes();
+        return mH2i.readBytes();
     }
 
     @Override
     public String readUTF() throws IOException {
-        return mH3i.readString();
+        return mH2i.readString();
     }
 
     @Override
     public Object readObject() throws IOException {
-        return mH3i.readObject();
+        return mH2i.readObject();
     }
 
     @Override
     @SuppressWarnings("unchecked")
     public <T> T readObject(Class<T> cls) throws IOException,
             ClassNotFoundException {
-        return (T) mH3i.readObject(cls);
+        return (T) mH2i.readObject(cls);
     }
 
     @Override
@@ -97,7 +98,7 @@ public class Hessian3ObjectInput implements ObjectInput {
     }
 
     public Hessian2Input getCmH2i() {
-        return mH3i;
+        return mH2i;
     }
 
 }

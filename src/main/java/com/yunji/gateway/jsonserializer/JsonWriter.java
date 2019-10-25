@@ -1,7 +1,7 @@
 package com.yunji.gateway.jsonserializer;
 
 
-import com.yunji.dubbo.common.serialize.hessian3.compatible.Offset;
+import com.yunji.dubbo.common.serialize.util.Offset;
 
 /**
  * thrift -> json

@@ -1,8 +1,8 @@
 package com.yunji.gateway.jsonserializer;
 
-import com.yunji.dubbo.common.serialize.hessian3.Hessian3Input;
-import com.yunji.dubbo.common.serialize.hessian3.compatible.Hessian3ObjectInput;
-import com.yunji.dubbo.common.serialize.hessian3.Hessian3ObjectOutput;
+import com.yunji.dubbo.common.serialize.compatible.Hessian3Input;
+import com.yunji.dubbo.common.serialize.compatible.Hessian3ObjectInput;
+import com.yunji.dubbo.common.serialize.streaming.Hessian2StreamingObjectOutput;
 import com.yunji.gateway.metadata.OptimizedService;
 import com.yunji.gateway.metadata.OptimizedStruct;
 import com.alibaba.dubbo.common.serialize.ObjectInput;
@@ -41,7 +41,7 @@ public class JsonSerializer implements BeanSerializer<String> {
     @Override
     public byte[] write(String input) throws IOException {
         ByteArrayOutputStream os = new ByteArrayOutputStream();
-        Hessian3ObjectOutput out = new Hessian3ObjectOutput(os);
+        Hessian2StreamingObjectOutput out = new Hessian2StreamingObjectOutput(os);
         JsonReader jsonReader = new JsonReader(optimizedStruct, optimizedService, out);
         new JsonParser(input, jsonReader).parseJsValue();
         out.flushBuffer();
@@ -60,7 +60,7 @@ public class JsonSerializer implements BeanSerializer<String> {
 
 
     private void read(Hessian3ObjectInput output, JsonCallback writer) throws IOException {
-        Hessian3Input cmH2i = output.getCmH2i();
+        Hessian3Input cmH2i = output.getCmH3i();
         cmH2i.setJsonCallback(writer);
         cmH2i.readObject();
     }

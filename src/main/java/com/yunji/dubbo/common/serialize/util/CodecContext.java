@@ -1,4 +1,4 @@
-package com.yunji.dubbo.common.serialize.hessian3.compatible;
+package com.yunji.dubbo.common.serialize.util;
 
 import org.apache.dubbo.common.threadlocal.InternalThreadLocal;
 

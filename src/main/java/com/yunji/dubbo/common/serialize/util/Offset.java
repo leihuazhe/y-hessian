@@ -1,4 +1,4 @@
-package com.yunji.dubbo.common.serialize.hessian3.compatible;
+package com.yunji.dubbo.common.serialize.util;
 
 /**
  * @author Denim.leihz 2019-09-26 5:58 PM

@@ -25,6 +25,9 @@ public interface GateConstants {
      * Gateway 自定义修改的 hessian2 协议,排序超过 hessian2 本身,这样才会被 ignore.
      */
     String SERIALIZATION_CUSTOM = "a_highly_hessian2";
+
+
+    String STREAMING_SERIALIZATION_CUSTOM = "hessian3";
     /**
      * 默认获取元数据信息的方法
      */

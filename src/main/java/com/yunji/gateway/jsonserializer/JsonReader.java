@@ -1,8 +1,8 @@
 package com.yunji.gateway.jsonserializer;
 
 import com.yunji.com.caucho.hessian.io.Hessian2Output;
-import com.yunji.dubbo.common.serialize.hessian3.Hessian3ObjectOutput;
-import com.yunji.dubbo.common.serialize.hessian3.compatible.Offset;
+import com.yunji.dubbo.common.serialize.streaming.Hessian2StreamingObjectOutput;
+import com.yunji.dubbo.common.serialize.util.Offset;
 import com.yunji.gateway.metadata.OptimizedService;
 import com.yunji.gateway.metadata.OptimizedStruct;
 import com.yunji.gateway.metadata.tag.DataType;
@@ -43,7 +43,7 @@ public class JsonReader implements JsonCallback {
     private List<StackNode> nodePool = new ArrayList<>(64);
 
     JsonReader(OptimizedStruct optimizedStruct, OptimizedService optimizedService,
-               Hessian3ObjectOutput out) {
+               Hessian2StreamingObjectOutput out) {
         this.optimizedStruct = optimizedStruct;
         this.optimizedService = optimizedService;
         this.cmH2o = out.getmH2o();
