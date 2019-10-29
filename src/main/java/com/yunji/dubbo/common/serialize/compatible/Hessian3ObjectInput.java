@@ -16,7 +16,7 @@
  */
 package com.yunji.dubbo.common.serialize.compatible;
 
-import com.yunji.dubbo.common.serialize.util.Hessian3SerializerFactory;
+import com.yunji.dubbo.common.serialize.util.Hessian2SerializerFactory;
 import org.apache.dubbo.common.serialize.ObjectInput;
 
 import java.io.IOException;
@@ -31,7 +31,8 @@ public class Hessian3ObjectInput implements ObjectInput {
 
     public Hessian3ObjectInput(InputStream is) {
         mH3i = new Hessian3Input(is);
-        mH3i.setSerializerFactory(Hessian3SerializerFactory.SERIALIZER_FACTORY);
+//        mH3i.setSerializerFactory(Hessian3SerializerFactory.SERIALIZER_FACTORY);
+        mH3i.setSerializerFactory(Hessian2SerializerFactory.SERIALIZER_FACTORY);
     }
 
     @Override
