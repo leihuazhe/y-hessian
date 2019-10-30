@@ -15,6 +15,7 @@ import java.io.IOException;
 import java.util.*;
 
 import static com.yunji.gateway.jsonserializer.JsonSerializationUtil.*;
+import static com.yunji.gateway.util.GateConstants.*;
 
 /**
  * @author Denim.leihz 2019-07-08 8:30 PM
@@ -297,7 +298,11 @@ public class JsonReader implements JsonCallback {
                 cmH2o.writeInt((int) value);
                 break;
             default:
-                if ("java.sql.Timestamp".equals(current.dataType.qualifiedName)) {
+                if (BIGDECIMAL_CLASS_TYPE.equals(current.dataType.qualifiedName)) {
+                    writeBigDecimal(String.valueOf(value));
+                    break;
+                }
+                if (TIMESTAMP_CLASS_TYPE.equals(current.dataType.qualifiedName)) {
                     cmH2o.writeUTCDate((long) value);
                     break;
                 }
@@ -306,6 +311,7 @@ public class JsonReader implements JsonCallback {
 
         }
     }
+
 
     @Override
     public void onNumber(long value) throws IOException {
@@ -359,7 +365,11 @@ public class JsonReader implements JsonCallback {
                 cmH2o.writeUTCDate(time);
                 break;
             default:
-                if ("java.util.Date".equals(current.dataType.qualifiedName)) {
+                if (BIGDECIMAL_CLASS_TYPE.equals(current.dataType.qualifiedName)) {
+                    writeBigDecimal(String.valueOf(value));
+                    break;
+                }
+                if (DATE_CLASS_TYPE.equals(current.dataType.qualifiedName)) {
                     cmH2o.writeUTCDate(JsonSerializationUtil.parseDateString(value));
                     break;
                 }
@@ -561,6 +571,22 @@ public class JsonReader implements JsonCallback {
                 cmH2o.writeObjectBegin(enumType);
             }
             cmH2o.writeString(name);
+        }
+    }
+
+    private void writeBigDecimal(String value) throws IOException {
+        int ref = cmH2o.writeObjectBegin(BIGDECIMAL_CLASS_TYPE);
+        if (ref < -1) {
+            cmH2o.writeString("value");
+            cmH2o.writeString(value);
+            cmH2o.writeMapEnd();
+        } else {
+            if (ref == -1) {
+                cmH2o.writeInt(1);
+                cmH2o.writeString("value");
+                cmH2o.writeObjectBegin(BIGDECIMAL_CLASS_TYPE);
+            }
+            cmH2o.writeString(value);
         }
     }
 

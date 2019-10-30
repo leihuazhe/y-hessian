@@ -71,7 +71,14 @@ public interface GateConstants {
     long METADATA_CALL_TIME_OUT = 2000L;
 
 
-
     int DEFAULT_RETRY = 3;
+
+
+    //Metadata type
+    String BIGDECIMAL_CLASS_TYPE = "java.math.BigDecimal";
+
+    String TIMESTAMP_CLASS_TYPE = "java.sql.Timestamp";
+
+    String DATE_CLASS_TYPE = "java.util.Date";
 }
 

@@ -1,6 +1,7 @@
 package gateway.test.api;
 
 import java.io.Serializable;
+import java.math.BigDecimal;
 
 /**
  * @author Denim.leihz 2019-07-08 10:18 PM
@@ -14,6 +15,8 @@ public class OrderDetail implements Serializable {
     private double Amount;
 
     private String remark;
+
+    private BigDecimal bigDecimal;
 
     public String getOrderNo() {
         return orderNo;
@@ -47,6 +50,14 @@ public class OrderDetail implements Serializable {
         this.remark = remark;
     }
 
+    public BigDecimal getBigDecimal() {
+        return bigDecimal;
+    }
+
+    public void setBigDecimal(BigDecimal bigDecimal) {
+        this.bigDecimal = bigDecimal;
+    }
+
     @Override
     public String toString() {
         return "OrderDetail{" +
@@ -54,6 +65,7 @@ public class OrderDetail implements Serializable {
                 ", detailSeq=" + detailSeq +
                 ", Amount=" + Amount +
                 ", remark='" + remark + '\'' +
+                ", bigDecimal=" + bigDecimal +
                 '}';
     }
 }

@@ -5,9 +5,9 @@ import com.yunji.dubbo.common.serialize.compatible.Hessian3ObjectInput;
 import com.yunji.dubbo.common.serialize.streaming.Hessian2StreamingObjectOutput;
 import com.yunji.gateway.metadata.OptimizedService;
 import com.yunji.gateway.metadata.OptimizedStruct;
-import com.alibaba.dubbo.common.serialize.ObjectInput;
+import org.apache.dubbo.common.serialize.ObjectInput;
+import org.apache.dubbo.common.serialize.ObjectOutput;
 
-import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 
 
@@ -39,13 +39,10 @@ public class JsonSerializer implements BeanSerializer<String> {
      * json -> hessian2 buffer
      */
     @Override
-    public byte[] write(String input) throws IOException {
-        ByteArrayOutputStream os = new ByteArrayOutputStream();
-        Hessian2StreamingObjectOutput out = new Hessian2StreamingObjectOutput(os);
-        JsonReader jsonReader = new JsonReader(optimizedStruct, optimizedService, out);
+    public void write(String input, ObjectOutput oproto) throws IOException {
+        JsonReader jsonReader;
+        jsonReader = new JsonReader(optimizedStruct, optimizedService, (Hessian2StreamingObjectOutput) oproto);
         new JsonParser(input, jsonReader).parseJsValue();
-        out.flushBuffer();
-        return os.toByteArray();
     }
 
     @Override

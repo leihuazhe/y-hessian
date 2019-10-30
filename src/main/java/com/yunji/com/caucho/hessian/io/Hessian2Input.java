@@ -3562,9 +3562,7 @@ public class Hessian2Input
             is.close();
     }
 
-    ;
-
-    final static class ObjectDefinition {
+    public final static class ObjectDefinition {
         private final String _type;
         private final String[] _fields;
 

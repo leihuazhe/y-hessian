@@ -10,6 +10,7 @@ import com.google.gson.Gson;
 import gateway.test.utils.Hessian2Utils;
 import org.junit.Test;
 
+import java.math.BigDecimal;
 import java.sql.Timestamp;
 import java.util.*;
 
@@ -103,6 +104,31 @@ public class Hessian2Test {
 
         System.out.println(deserialize.toString());
 
+    }
+
+    @Test
+    public void test4() {
+        OrderRequest request = new OrderRequest();
+        List<OrderDetail> orderDetailList = new ArrayList<>();
+
+        OrderDetail orderDetail = new OrderDetail();
+        orderDetail.setAmount(12.3);
+        orderDetail.setOrderNo("1023");
+        orderDetail.setBigDecimal(BigDecimal.valueOf(12.41));
+
+        orderDetailList.add(orderDetail);
+
+        request.setOrderDetialList(orderDetailList);
+        //serialize
+        byte[] serializeObj = hessian2Utils.serialize(request);
+        //deserialize
+        Object deserialize = hessian2Utils.deserialize(serializeObj);
+
+        System.out.println("\n............ 结果展示 BEGIN............ \n");
+
+        System.out.println(deserialize.toString());
+
+        System.out.println("\n............ 结果展示 END............ \n");
     }
 
     public static void test3() {

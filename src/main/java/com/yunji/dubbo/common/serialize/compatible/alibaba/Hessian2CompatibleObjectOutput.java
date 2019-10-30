@@ -18,7 +18,7 @@ package com.yunji.dubbo.common.serialize.compatible.alibaba;
 
 import com.alibaba.dubbo.common.serialize.ObjectOutput;
 import com.yunji.com.caucho.hessian.io.Hessian2Output;
-import com.yunji.dubbo.common.serialize.util.Hessian3SerializerFactory;
+import com.yunji.dubbo.common.serialize.util.Hessian2SerializerFactory;
 
 import java.io.IOException;
 import java.io.OutputStream;
@@ -35,7 +35,7 @@ public class Hessian2CompatibleObjectOutput implements ObjectOutput {
 
     public Hessian2CompatibleObjectOutput(OutputStream os) {
         mH3o = new Hessian2Output(os);
-        mH3o.setSerializerFactory(Hessian3SerializerFactory.SERIALIZER_FACTORY);
+        mH3o.setSerializerFactory(Hessian2SerializerFactory.SERIALIZER_FACTORY);
     }
 
     @Override

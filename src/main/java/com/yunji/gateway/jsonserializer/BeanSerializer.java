@@ -1,8 +1,8 @@
 package com.yunji.gateway.jsonserializer;
 
 
-
-import com.alibaba.dubbo.common.serialize.ObjectInput;
+import org.apache.dubbo.common.serialize.ObjectInput;
+import org.apache.dubbo.common.serialize.ObjectOutput;
 
 import java.io.IOException;
 
@@ -24,8 +24,11 @@ public interface BeanSerializer<T> {
 
     /**
      * 序列化方法, 把PoJo转换为Thrift协议格式
+     *
+     * @param bean
+     * @param oproto
      */
-    byte[] write(T bean) throws Exception;
+    void write(T bean, ObjectOutput oproto) throws Exception;
 
     /**
      * PoJo校验方法
@@ -42,4 +45,3 @@ public interface BeanSerializer<T> {
      */
     String toString(T bean);
 }
-
