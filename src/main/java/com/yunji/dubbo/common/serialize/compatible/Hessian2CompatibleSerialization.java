@@ -11,7 +11,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
 
-import static com.yunji.gateway.util.GateConstants.STREAMING_SERIALIZATION_CUSTOM;
+import static com.yunji.flurry.util.GateConstants.STREAMING_SERIALIZATION_CUSTOM;
 import static org.apache.dubbo.remoting.Constants.SERIALIZATION_KEY;
 
 /**
