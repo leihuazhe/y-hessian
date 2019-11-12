@@ -1,4 +1,4 @@
-## Hessian Lite(Apache Dubbo private version)
+## Hessian Lite(Apache Dubbo private version in Yunji Co.Ltd)
 
 [![Build Status](https://travis-ci.org/apache/dubbo-hessian-lite.svg?branch=master)](https://travis-ci.org/apache/dubbo-hessian-lite)
 [![codecov](https://codecov.io/gh/apache/dubbo-hessian-lite/branch/master/graph/badge.svg)](https://codecov.io/gh/apache/dubbo-hessian-lite)
