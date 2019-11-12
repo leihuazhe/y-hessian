@@ -13,6 +13,32 @@ Hessian-lite is a Alibaba dubbo embed version of [official hessian](https://gith
 
 Now we are trying to build a hessian group https://github.com/hessian-group to make maintainers of Hessian community work more closely together .
 
+
+## 工程目录
+
+- core
+    - Y-hessian-lite 核心序列化/反序列化实现工程
+
+- lite
+    - Dubbo服务依赖此模块,可以同时支持 Hessian2 原生协议和流式协议
+
+- flurry
+    - 网关需要的流式化协议模块
+    
+
+Maven 模块:
+
+- y-hessian-parent
+
+- y-hessian-core
+
+- y-hessian-lite
+
+- y-hessian-flurry
+
+
+
+
 ## Maven dependency
 
 > Yunji 自定义 hessian 流式化协议 => y-hessian-lite

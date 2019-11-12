@@ -1,2 +1,0 @@
-hessian3=com.yunji.dubbo.common.serialize.streaming.Hessian2StreamingSerialization
-a_hessian2_compatible=com.yunji.dubbo.common.serialize.compatible.Hessian2CompatibleSerialization
