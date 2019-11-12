@@ -2,12 +2,12 @@ package flurry.test;
 
 import com.alibaba.dubbo.common.logger.Logger;
 import com.alibaba.dubbo.common.logger.LoggerFactory;
+import com.google.gson.Gson;
+import flurry.test.api.BigEnum;
 import flurry.test.api.Hello;
 import flurry.test.api.OrderDetail;
 import flurry.test.api.OrderRequest;
 import flurry.test.utils.Hessian2Utils;
-import flurry.test.api.BigEnum;
-import com.google.gson.Gson;
 import org.junit.Test;
 
 import java.math.BigDecimal;

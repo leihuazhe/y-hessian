@@ -13,7 +13,6 @@ public class NettyTransporterWrapper implements Transporter {
     private Transporter transporter;
 
     private static final String DUBBO_CODEC_NAME = "yunji_dubbo_compatible";
-    private static final String REMOTING_SERIALIZATION = "hessian2_compatible";
 
     public NettyTransporterWrapper(Transporter transporter) {
         if (transporter == null) {
@@ -24,8 +23,6 @@ public class NettyTransporterWrapper implements Transporter {
 
     @Override
     public Server bind(URL url, ChannelHandler handler) throws RemotingException {
-//        url = url.addParameters(Constants.CODEC_KEY, DUBBO_CODEC_NAME,
-//                Constants.SERIALIZATION_KEY, REMOTING_SERIALIZATION);
         url = url.addParameter(Constants.CODEC_KEY, DUBBO_CODEC_NAME);
         return transporter.bind(url, handler);
     }
