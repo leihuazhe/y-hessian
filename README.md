@@ -15,11 +15,12 @@ Now we are trying to build a hessian group https://github.com/hessian-group to m
 
 ## Maven dependency
 
+> Yunji 自定义 hessian 流式化协议 => y-hessian-lite
 ```xml
 <dependency>
-    <groupId>com.alibaba</groupId>
-    <artifactId>hessian-lite</artifactId>
-    <version>3.2.6</version>
-<dependency>
+    <groupId>com.yunji.flurry</groupId>
+    <artifactId>y-hessian-lite</artifactId>
+    <version>3.0.0-SNAPSHOT</version>
+</dependency>
 ```
 
