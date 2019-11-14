@@ -1,0 +1,43 @@
+{
+  "args1": {
+    "STATUS_HAD_PORTION_SEND": 568,
+    "STATUS_HAD_SEND": 377,
+    "orderId": "oms_1023",
+    "status": 801,
+    "logisticsList": [
+      {
+        "skuNo": "1023",
+        "logisticsCompanyNo": "logistics_1023"
+      },
+      {
+        "skuNo": "0317",
+        "logisticsCompanyNo": "logistics_0317"
+      }
+    ]
+  },
+  "args0": {
+    "code": 429,
+    "orderNo": "order_1023",
+    "productCount": 227,
+    "totalAmount": 96.75694259130094,
+    "storeId": "12700123",
+    "flag": "true",
+    "status": "FINISHED",
+    "orderDetailList": [
+      {
+        "orderNo": "order_1023",
+        "detailSeq": 412,
+        "Amount": 60.19072877870404,
+        "remark": "Maple",
+        "status": "FINISHED"
+      },
+      {
+        "orderNo": "order_0317",
+        "detailSeq": 203,
+        "Amount": 95.82912210232541,
+        "remark": "May",
+        "status": "DOING"
+      }
+    ]
+  }
+}

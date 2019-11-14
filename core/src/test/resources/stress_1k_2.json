@@ -1,0 +1,42 @@
+{
+  "args0": {
+    "omsOrderRequest": {
+      "STATUS_HAD_PORTION_SEND": 568,
+      "STATUS_HAD_SEND": 377,
+      "orderId": "表达式",
+      "status": 801,
+      "logisticsList": [
+        {
+          "skuNo": "1023",
+          "logisticsCompanyNo": "hessian3=com.yunji.dubbo.common.serialize.hessian3.compatible.Hessian3Serialization&hessian3=com.yunji.dubbo.common.serialize.hessian3.compatible.Hessian3Serialization"
+        }
+      ]
+    },
+    "orderRequest": {
+      "code": 429,
+      "orderNo": "贪婪与贪婪模式",
+      "productCount": 227,
+      "totalAmount": 96.75694259130094,
+      "storeId": "12700123",
+      "flag": "true",
+      "status": "FINISHED",
+      "orderDetailList": [
+        {
+          "orderNo": "order_1023",
+          "detailSeq": 412,
+          "Amount": 60.19072877870404,
+          "remark": "匹配行为",
+          "status": "FINISHED"
+        },
+        {
+          "orderNo": "order_0317",
+          "detailSeq": 203,
+          "Amount": 95.82912210232541,
+          "remark": "真正掌握，还是要从匹配原理来理解的",
+          "status": "DOING"
+        }
+      ]
+    }
+  }
+}
+

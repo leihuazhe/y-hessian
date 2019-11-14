@@ -1,0 +1,40 @@
+{
+  "args0": {
+    "orderDetailSet": [
+      {
+        "orderNo": "sampleDataString",
+        "detailSeq": 22,
+        "Amount": 74.85261284870846,
+        "remark": "sampleDataString",
+        "status": "DOING"
+      },
+      {
+        "orderNo": "sampleDataString",
+        "detailSeq": 440,
+        "Amount": 6.658497268780672,
+        "remark": "sampleDataString",
+        "status": "DOING"
+      }
+    ],
+    "orderDetailMap": {
+      "sampleDataString": {
+        "orderNo": "sampleDataString",
+        "detailSeq": 611,
+        "Amount": 19.456135822306454,
+        "remark": "sampleDataString",
+        "status": "FINISHED"
+      }
+    },
+    "orderDetailMap2": {
+      "[object Object]": {
+        "orderNo": "sampleDataString",
+        "detailSeq": 953,
+        "Amount": 22.338787800033867,
+        "remark": "sampleDataString",
+        "status": "DOING"
+      }
+    }
+  }
+}
+
+//对于Map, 不能设置 key 也为对象的情况，key只能为基本数据。

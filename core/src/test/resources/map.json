@@ -1,0 +1,21 @@
+{
+  "args0": {
+    "orderDetailSet": [ ],
+    "orderDetailMap": {
+      "maple": {
+        "orderNo": "1023",
+        "detailSeq": 1,
+        "Amount": "12",
+        "remark": "maple",
+        "status": "FINISHED"
+      },
+      "may": {
+        "orderNo": "317",
+        "detailSeq": 2,
+        "Amount": "23",
+        "remark": "may",
+        "status": "DOING"
+      }
+    }
+  }
+}

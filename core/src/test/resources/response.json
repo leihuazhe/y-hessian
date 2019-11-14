@@ -1,0 +1,42 @@
+{
+  "omsOrderRequest": {
+    "logisticsList": [
+      {
+        "logisticsCompanyNo": "hessian3=com.yunji.dubbo.common.serialize.hessian3.compatible.Hessian3Serialization&hessian3=com.yunji.dubbo.common.serialize.hessian3.compatible.Hessian3Serialization",
+        "skuNo": "1023"
+      }
+    ],
+    "status": 801,
+    "orderId": "表达式"
+  },
+  "orderRequest": {
+    "orderDetailList": [
+      {
+        "status": {
+          "name": "FINISHED"
+        },
+        "remark": "匹配行为",
+        "Amount": 60.19072877870404,
+        "detailSeq": 412,
+        "orderNo": "order_1023"
+      },
+      {
+        "status": {
+          "name": "DOING"
+        },
+        "remark": "真正掌握，还是要从匹配原理来理解的",
+        "Amount": 95.82912210232541,
+        "detailSeq": 203,
+        "orderNo": "order_0317"
+      }
+    ],
+    "status": {
+      "name": "FINISHED"
+    },
+    "flag": true,
+    "storeId": "12700123",
+    "totalAmount": 96.75694259130094,
+    "productCount": 227,
+    "orderNo": "贪婪与贪婪模式"
+  }
+}
