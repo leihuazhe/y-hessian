@@ -346,7 +346,8 @@ public class JsonReader implements JsonCallback {
                 cmH2o.writeDouble(Double.parseDouble(value));
                 break;
             case BIGDECIMAL:
-                cmH2o.writeString(value);
+                writeBigDecimal(String.valueOf(value));
+//                cmH2o.writeString(value);
                 break;
             case INTEGER:
                 cmH2o.writeInt(Integer.parseInt(value));

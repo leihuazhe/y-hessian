@@ -18,6 +18,7 @@ package com.yunji.flurry.metadata.tag;
 
 import javax.xml.bind.annotation.*;
 import java.util.List;
+import java.util.Objects;
 
 /**
  * @author Denim.leihz 2019-07-08 8:21 PM
@@ -132,5 +133,19 @@ public class TEnum {
 
     public void setAnnotations(List<Annotation> annotations) {
         this.annotations = annotations;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        TEnum tEnum = (TEnum) o;
+        return Objects.equals(namespace, tEnum.namespace) &&
+                Objects.equals(name, tEnum.name);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(namespace, name);
     }
 }

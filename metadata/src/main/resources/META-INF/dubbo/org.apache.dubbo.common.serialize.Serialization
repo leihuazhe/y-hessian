@@ -1,0 +1,3 @@
+y_hessian=com.yunji.dubbo.common.serialize.streaming.YHessianStreamingSerialization
+
+a_y_hessian_compatible=com.yunji.dubbo.common.serialize.compatible.YHessianCompatibleSerialization
