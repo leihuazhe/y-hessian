@@ -31,6 +31,16 @@ public class YunjiDubboCodec extends DubboCodec {
 
     private Serialization hessian2CompatibleSerialization = new Hessian2CompatibleSerialization();
 
+    private static boolean package2Serialization;
+
+    static {
+        try {
+            package2Serialization = null != Class.forName("com.alibaba.dubbo.common.serialize.hessian2.Hessian2Serialization");
+        } catch (Throwable t) {
+            package2Serialization = false;
+        }
+    }
+
     @Override
     protected Object decodeBody(Channel channel, InputStream is, byte[] header) throws IOException {
         byte flag = header[2], proto = (byte) (flag & SERIALIZATION_MASK);
@@ -126,7 +136,12 @@ public class YunjiDubboCodec extends DubboCodec {
     @Override
     protected Serialization getSerialization(Channel channel) {
         Serialization serialization = CodecSupport.getSerialization(channel.getUrl());
-        if (serialization instanceof Hessian2Serialization) {
+
+        if (package2Serialization) {
+            if (serialization instanceof com.alibaba.dubbo.common.serialize.hessian2.Hessian2Serialization) {
+                return hessian2CompatibleSerialization;
+            }
+        } else if (serialization instanceof Hessian2Serialization) {
             return hessian2CompatibleSerialization;
         }
         return serialization;

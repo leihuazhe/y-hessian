@@ -11,7 +11,6 @@
     <packaging>jar</packaging>
 
     <artifactId>y-hessian-core</artifactId>
-    <name>Core</name>
 
     <dependencies>
         <dependency>
