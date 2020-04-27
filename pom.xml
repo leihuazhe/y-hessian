@@ -29,7 +29,6 @@
     </modules>
 
     <packaging>pom</packaging>
-    <name>Parent(Y-Hessian2)</name>
 
     <properties>
         <junit_version>4.12</junit_version>
