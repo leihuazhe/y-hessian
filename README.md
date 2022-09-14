@@ -27,7 +27,7 @@ Maven 模块:
 
 ## Maven dependency
 
-> Yunji 自定义 hessian 流式化协议 => y-hessian-lite
+> 自定义 hessian 流式化协议 => y-hessian-lite
 ```xml
 <dependency>
     <groupId>com.yunji.flurry</groupId>
